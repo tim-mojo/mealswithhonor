@@ -1,0 +1,193 @@
+/* ==========================================================================
+   Wall of Honor — sponsors & donors section (home page)
+   Separate from main.css because main.css is a generated theme build.
+   Readability first: large type, high contrast, no continuously moving
+   text, big labelled controls, and nothing auto-advances when the visitor
+   (or the site's "Pause animations" toggle / OS reduced-motion) says not to.
+   ========================================================================== */
+
+/* centered heading block */
+.mwh-woh__head { text-align: center; }
+.mwh-woh__head .mwh-copy { margin-left: auto; margin-right: auto; }
+/* kicker is a flex row with a trailing line; mirror it so the centered label is balanced */
+.mwh-woh__head .mwh-kicker { justify-content: center; }
+.mwh-woh__head .mwh-kicker::before {
+  content: "";
+  flex: none;
+  height: 2px;
+  width: clamp(24px, 4vw, 56px);
+  background: linear-gradient(270deg, currentColor, transparent);
+}
+
+.mwh-woh__subhead {
+  font-family: var(--mwh-font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--mwh-navy);
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+/* ---- Business partner logos ---- */
+.mwh-woh__logos {
+  list-style: none;
+  margin: 0 0 56px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.mwh-woh__logo-card {
+  background: var(--mwh-cream);
+  border: 1px solid var(--mwh-line);
+  border-radius: var(--mwh-radius-card);
+  padding: 24px 20px 20px;
+  text-align: center;
+}
+.mwh-woh__logo {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.mwh-woh__logo img { max-height: 56px; max-width: 100%; width: auto; height: auto; }
+.mwh-woh__biz {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--mwh-ink);
+  margin: 0;
+}
+.mwh-woh__gift {
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--mwh-muted);
+  margin: 4px 0 0;
+}
+
+/* ---- Individual donor wall (plaque) ---- */
+.mwh-woh__wall {
+  position: relative;
+  background: var(--mwh-navy);
+  color: #fff;
+  border-radius: var(--mwh-radius-card);
+  padding: 44px 44px 36px;
+  overflow: hidden;
+  box-shadow: var(--mwh-shadow-md);
+}
+.mwh-woh__wall-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  padding-bottom: 22px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid rgba(255, 255, 255, .22);
+}
+.mwh-woh__wall-title {
+  font-family: var(--mwh-font-heading);
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+  margin: 0 0 6px;
+}
+.mwh-woh__wall-note { font-size: 16px; line-height: 1.5; color: rgba(255, 255, 255, .85); margin: 0; }
+.mwh-woh__status { font-size: 17px; font-weight: 600; color: #fff; margin: 0; white-space: nowrap; }
+.mwh-woh__status:empty { display: none; }
+
+.mwh-woh__names {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px 28px;
+  align-content: start; /* short groups stay top-aligned within the locked height */
+  transition: opacity .45s var(--mwh-ease);
+}
+.mwh-woh__names.is-fading { opacity: 0; }
+.mwh-woh__names li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 0 10px 18px;
+  border-left: 3px solid var(--mwh-red);
+}
+.mwh-woh__names li[hidden] { display: none; }
+.mwh-woh__name { font-size: 20px; font-weight: 600; line-height: 1.3; color: #fff; }
+.mwh-woh__amt { font-size: 17px; line-height: 1.35; color: rgba(255, 255, 255, .85); }
+
+/* controls: large, labelled, high-contrast */
+.mwh-woh__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, .22);
+}
+.mwh-woh__controls[hidden] { display: none; }
+.mwh-woh__ctl {
+  min-height: 48px;
+  padding: 10px 22px;
+  font-family: var(--mwh-font-body);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #fff;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .7);
+  border-radius: var(--mwh-radius-button);
+  cursor: pointer;
+}
+.mwh-woh__ctl:hover { background: #fff; color: var(--mwh-navy); border-color: #fff; }
+.mwh-woh__ctl:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.mwh-woh__ctl--all { margin-left: auto; background: #fff; color: var(--mwh-navy); border-color: #fff; }
+.mwh-woh__ctl--all:hover { background: var(--mwh-cream); }
+.mwh-woh__wall.is-all [data-woh-prev],
+.mwh-woh__wall.is-all [data-woh-next],
+.mwh-woh__wall.is-all [data-woh-pause] { display: none; }
+
+/* ---- Closing call to action ---- */
+.mwh-woh__cta {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.mwh-woh__cta-copy { font-size: 19px; font-weight: 600; color: var(--mwh-navy); margin: 0; }
+.mwh-woh__cta .mwh-btn-row { margin: 0; justify-content: center; }
+.mwh-woh__cta .mwh-btn { margin-top: 0; }
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .mwh-woh__logos { grid-template-columns: repeat(3, 1fr); }
+  .mwh-woh__names { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 760px) {
+  .mwh-woh__logos { grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 40px; }
+  .mwh-woh__logo-card { padding: 18px 14px 16px; }
+  .mwh-woh__logo { height: 56px; margin-bottom: 12px; }
+  .mwh-woh__logo img { max-height: 44px; }
+  .mwh-woh__wall { padding: 34px 22px 26px; }
+  .mwh-woh__wall-title { font-size: 24px; }
+  /* row 1: Previous | Next   row 2: Pause | See all */
+  .mwh-woh__ctl { flex: 1 1 calc(50% - 6px); padding: 10px 12px; }
+  .mwh-woh__ctl[data-woh-pause] { order: 3; }
+  .mwh-woh__ctl--all { order: 4; margin-left: 0; }
+  .mwh-woh__wall.is-all .mwh-woh__ctl--all { flex-basis: 100%; }
+  .mwh-woh__cta .mwh-btn-row, .mwh-woh__cta .mwh-btn { width: 100%; }
+}
+@media (max-width: 520px) {
+  .mwh-woh__names { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mwh-woh__names { transition: none; }
+}

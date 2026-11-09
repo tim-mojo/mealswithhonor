@@ -1,0 +1,140 @@
+/* ==========================================================================
+   Meals with Honor — Option A ("Patriotic") design tokens
+   Extracted from the approved desktop and mobile mockups.
+   Drop into your theme's stylesheet (or a separate tokens partial) as a
+   starting point. Section/component styles below are a reference for
+   rebuilding in WordPress — adjust selectors to match your theme or
+   page-builder markup.
+   ========================================================================== */
+
+:root {
+  /* ---- Color ---- */
+  --mwh-navy:        #1b3358;   /* primary brand color — headings, nav, buttons */
+  --mwh-navy-dark:    #0f2038;  /* footer background, hero overlay (dark end) */
+  --mwh-red:          #c8102e;  /* accent — CTAs, kickers, icon badges */
+  --mwh-red-dark:     #a10d26;  /* accent hover/active state */
+  --mwh-ink:          #1f2933;  /* body text on white */
+  --mwh-muted:        #5b6b7a;  /* secondary/supporting text */
+  --mwh-line:         #e4e8ec;  /* hairline borders, card borders */
+  --mwh-cream:        #fbfaf7;  /* alternate section background */
+  --mwh-white:        #ffffff;
+
+  /* ---- Type ---- */
+  --mwh-font-heading: 'Oswald', 'Arial Narrow', sans-serif;   /* h1–h4, buttons, kickers */
+  --mwh-font-body:    'Source Sans 3', system-ui, sans-serif; /* paragraphs, nav, links */
+
+  /* ---- Radius ---- */
+  --mwh-radius-button: 4px;
+  --mwh-radius-card:   8px;
+  --mwh-radius-pill:   20px;   /* hero eyebrow badge */
+
+  /* ---- Spacing (section vertical padding) ---- */
+  --mwh-space-section-desktop: 88px;
+  --mwh-space-section-mobile:  56px;
+  --mwh-gutter-desktop: 64px;
+  --mwh-gutter-mobile:  20px;
+}
+
+/* Google Fonts — add to WordPress via wp_enqueue_style() in functions.php,
+   not a raw @import (raw @import blocks render and is slower):
+   https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap
+*/
+
+/* ---- Base type ---- */
+body {
+  font-family: var(--mwh-font-body);
+  color: var(--mwh-ink);
+  background: #fff;
+}
+h1, h2, h3, h4 {
+  font-family: var(--mwh-font-heading);
+  margin: 0;
+  letter-spacing: .01em;
+}
+a { color: var(--mwh-red); text-decoration: none; }
+a:hover { color: var(--mwh-red-dark); }
+
+/* ---- Type scale ---- */
+/* Kicker (small eyebrow label above section headings) */
+.mwh-kicker {
+  font-family: var(--mwh-font-body);
+  font-size: 12px;             /* mobile: 11px */
+  font-weight: 700;
+  letter-spacing: .16em;       /* mobile: .14em */
+  text-transform: uppercase;
+  color: var(--mwh-red);
+  margin-bottom: 14px;         /* mobile: 12px */
+}
+/* Section heading (h2) */
+.mwh-heading {
+  font-size: 34px;             /* mobile: 26px */
+  color: var(--mwh-navy);
+  font-weight: 700;
+  margin-bottom: 18px;         /* mobile: 14px */
+}
+/* Hero headline (h1) */
+.mwh-hero-heading {
+  font-size: 46px;             /* mobile: 28px */
+  color: #fff;
+  line-height: 1.16;           /* mobile: 1.2 */
+  margin-bottom: 22px;         /* mobile: 16px */
+}
+/* Card heading (h4) */
+.mwh-card-heading {
+  font-size: 18px;             /* mobile: 17px */
+  color: var(--mwh-navy);
+  margin-bottom: 10px;
+}
+/* Body copy */
+.mwh-copy {
+  font-size: 16px;             /* mobile: 14.5px */
+  line-height: 1.65;           /* mobile: 1.6 */
+  color: var(--mwh-muted);
+  max-width: 640px;
+}
+
+/* ---- Buttons ---- */
+.mwh-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 15px 32px;          /* mobile: 15px 26px */
+  font-family: var(--mwh-font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  border-radius: var(--mwh-radius-button);
+  cursor: pointer;
+  border: 2px solid transparent;
+  white-space: nowrap;
+}
+.mwh-btn-red        { background: var(--mwh-red);  color: #fff; border-color: var(--mwh-red); }
+.mwh-btn-red:hover   { background: var(--mwh-red-dark); border-color: var(--mwh-red-dark); }
+.mwh-btn-outline-navy  { background: transparent; color: var(--mwh-navy); border-color: var(--mwh-navy); }
+.mwh-btn-outline-white { background: transparent; color: #fff; border-color: #fff; }
+
+/* ---- Cards ---- */
+.mwh-card {
+  border: 1px solid var(--mwh-line);
+  border-radius: var(--mwh-radius-card);
+  background: #fff;
+}
+
+/* ---- Layout ---- */
+.mwh-section {
+  padding: var(--mwh-space-section-desktop) var(--mwh-gutter-desktop);
+}
+.mwh-section--alt {
+  background: var(--mwh-cream);
+}
+@media (max-width: 600px) {
+  .mwh-section {
+    padding: var(--mwh-space-section-mobile) var(--mwh-gutter-mobile);
+  }
+}
+
+/* ---- Breakpoints used in the mockups ---- */
+/* Desktop reference width: 1440px   Mobile reference width: 390px
+   Recommended container max-width: 1200–1280px with fluid gutters. */
