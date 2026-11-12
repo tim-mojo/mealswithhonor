@@ -191,3 +191,7 @@
 @media (prefers-reduced-motion: reduce) {
   .mwh-woh__names { transition: none; }
 }
+
+/* section sits on the off-white background now (between the navy meal form and the white gallery),
+   so the logo cards switch to white to keep them reading as cards */
+.mwh-section--alt .mwh-woh__logo-card { background: #fff; }
