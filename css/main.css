@@ -12,3 +12,50 @@
 .mwh-who-single .mwh-card--media img{width:100%;height:100%;min-height:300px;object-fit:cover}
 .mwh-who-single .mwh-card__body{display:flex;flex-direction:column;justify-content:center}
 @media (max-width:767px){.mwh-who-single .mwh-card--media{grid-template-columns:1fr}.mwh-who-single .mwh-card--media img{min-height:220px;height:auto}}
+
+/* ===== Nov 24 updates ===== */
+/* By the Numbers: running ticker (About) */
+.mwh-numbers .mwh-section-head{margin-bottom:32px}
+.mwh-ticker{overflow:hidden;background:var(--mwh-navy);color:#fff;border-top:4px solid var(--mwh-red);border-bottom:4px solid var(--mwh-red);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.mwh-ticker__track{display:flex;width:max-content;animation:mwh-ticker 38s linear infinite}
+.mwh-ticker:hover .mwh-ticker__track,.mwh-ticker:focus-within .mwh-ticker__track,[data-motion-paused] .mwh-ticker__track{animation-play-state:paused}
+.mwh-ticker__list{display:flex;list-style:none;margin:0;padding:0}
+.mwh-ticker__item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:26px 44px;white-space:nowrap;position:relative}
+.mwh-ticker__item::after{content:"\2605";position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--mwh-red);font-size:16px}
+.mwh-ticker__n{font-family:var(--mwh-font-heading);font-weight:700;font-size:40px;line-height:1;letter-spacing:.01em}
+.mwh-ticker__l{font-size:15px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+@keyframes mwh-ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (max-width:767px){.mwh-ticker__item{padding:20px 30px}.mwh-ticker__n{font-size:30px}.mwh-ticker__l{font-size:13px}}
+@media (prefers-reduced-motion:reduce){.mwh-ticker{-webkit-mask-image:none;mask-image:none}.mwh-ticker__track{animation:none;width:auto}.mwh-ticker__list{flex-wrap:wrap;justify-content:center;width:100%}.mwh-ticker__list[aria-hidden]{display:none}}
+
+/* Who We Serve: "All those we serve" pills */
+.mwh-pills-group{margin-top:22px;padding-top:20px;border-top:1px solid var(--mwh-line)}
+.mwh-pills__label{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mwh-navy);margin:0 0 12px}
+.mwh-pills{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.mwh-pills li{font-size:15px;font-weight:600;line-height:1.2;padding:8px 14px;border-radius:999px;background:var(--mwh-cream);border:1px solid var(--mwh-line);color:var(--mwh-ink)}
+
+/* Contact: response-time card */
+.mwh-response-card{border-top:4px solid var(--mwh-red)}
+.mwh-response-card .mwh-kicker{margin-bottom:10px}
+.mwh-response-card .mwh-card-heading{font-size:28px;line-height:1.2;margin:0}
+
+/* Home: meal sign-up prompt */
+.mwh-meal-cta .mwh-kicker{color:#fff;justify-content:center}
+
+/* Who We Serve mind map (replaces the pill list) */
+.mwh-mindmap{position:relative;margin-top:24px;padding-top:20px;border-top:1px solid var(--mwh-line);height:360px}
+.mwh-mindmap__lines{position:absolute;left:0;right:0;top:20px;bottom:0;width:100%;height:calc(100% - 20px);overflow:visible}
+.mwh-mindmap__lines line{stroke:var(--mwh-red);stroke-width:2;stroke-dasharray:4 4;vector-effect:non-scaling-stroke;opacity:.6}
+.mwh-mindmap__hub{position:absolute;left:50%;top:calc(20px + (100% - 20px)/2);transform:translate(-50%,-50%);z-index:2;margin:0;width:112px;height:112px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;background:var(--mwh-navy);color:#fff;font-family:var(--mwh-font-heading);font-size:17px;font-weight:700;line-height:1.15;box-shadow:0 0 0 5px #fff,0 0 0 7px var(--mwh-red)}
+.mwh-mindmap__nodes{list-style:none;margin:0;padding:0;position:absolute;left:0;right:0;top:20px;bottom:0}
+.mwh-mindmap__nodes li{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);z-index:1;max-width:132px;text-align:center;font-size:15px;font-weight:600;line-height:1.2;padding:8px 14px;border-radius:999px;background:var(--mwh-cream);border:1px solid var(--mwh-line);color:var(--mwh-ink)}
+@media (max-width:1024px) and (min-width:768px){.mwh-mindmap{height:380px}.mwh-mindmap__nodes li{font-size:14px;padding:7px 10px;max-width:112px}.mwh-mindmap__hub{width:96px;height:96px;font-size:15px}}
+/* narrow screens: hub on top, branches drop down into a wrapped list */
+@media (max-width:520px){
+ .mwh-mindmap{height:auto;display:flex;flex-direction:column;align-items:center}
+ .mwh-mindmap__lines{display:none}
+ .mwh-mindmap__hub{position:relative;left:auto;top:auto;transform:none;width:auto;height:auto;border-radius:999px;padding:12px 22px;margin-bottom:28px}
+ .mwh-mindmap__hub::after{content:"";position:absolute;left:50%;top:100%;width:2px;height:28px;background:var(--mwh-red);opacity:.6;transform:translateX(-50%)}
+ .mwh-mindmap__nodes{position:relative;inset:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:10px;padding-top:14px;border-top:2px dashed rgba(193,39,45,.45);width:100%}
+ .mwh-mindmap__nodes li{position:static;transform:none;max-width:none}
+}
